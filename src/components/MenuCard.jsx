@@ -22,6 +22,9 @@ function MenuCard({ item, addToCart, openModal }) {
             <div className="rating-stars">
               <i className="bi bi-star-fill"></i> {item.rating}
             </div>
+            <small className="prep-time">
+              <i className="bi bi-clock me-1"></i>Freshly made
+            </small>
           </div>
 
           <div className="d-flex gap-2 mt-3">

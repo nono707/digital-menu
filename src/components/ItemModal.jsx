@@ -13,7 +13,9 @@ function ItemModal({ item, closeModal, addToCart }) {
             <div>
               <span className="badge bloom-badge-static mb-2">{item.badge}</span>
               <h3 className="fw-bold">{item.name}</h3>
-              <p className="text-muted mb-1">{item.category} • {item.tag}</p>
+              <p className="text-muted mb-1">
+                {item.category} • {item.tag}
+              </p>
             </div>
             <span className="price-tag">${item.price.toFixed(2)}</span>
           </div>
@@ -25,7 +27,7 @@ function ItemModal({ item, closeModal, addToCart }) {
               <i className="bi bi-star-fill me-2"></i>{item.rating} Rating
             </span>
             <span className="info-chip">
-              <i className="bi bi-flower1 me-2"></i>Bloom Signature
+              <i className="bi bi-flower1 me-2"></i>Signature Selection
             </span>
             <span className="info-chip">
               <i className="bi bi-heart me-2"></i>Freshly Prepared

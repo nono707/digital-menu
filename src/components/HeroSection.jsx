@@ -4,16 +4,16 @@ function HeroSection() {
       <div className="row align-items-center g-4">
         <div className="col-lg-6">
           <div className="hero-text">
-            <p className="hero-tag">Bloom & Bite ✨ Modern Dining</p>
+            <p className="hero-tag">Bloom & Bite ✨ Signature Dining</p>
 
             <h1 className="hero-title">
               Where elegance meets <span>flavor</span>
             </h1>
 
             <p className="hero-desc">
-              Explore a premium dining experience with beautifully crafted main
-              courses, refreshing drinks, fresh salads, and signature desserts —
-              all in one elegant digital menu.
+              Explore a beautifully curated dining experience with signature main
+              courses, fresh salads, handcrafted drinks, and elegant desserts —
+              all designed to feel warm, modern, and unforgettable.
             </p>
 
             <div className="special-box mt-4">
@@ -29,7 +29,7 @@ function HeroSection() {
         <div className="col-lg-6">
           <div className="hero-image-card">
             <img
-              src="/images/hero-dining.jpg"
+              src={`${import.meta.env.BASE_URL}images/hero-dining.jpg`}
               alt="Bloom and Bite premium dining"
               className="img-fluid hero-img"
             />

@@ -8,7 +8,7 @@ function NavbarMenu({ cartCount }) {
 
         <div className="ms-auto cart-pill">
           <i className="bi bi-bag-heart-fill me-2"></i>
-          {cartCount} item{cartCount !== 1 ? 's' : ''}
+          {cartCount} item{cartCount !== 1 ? 's' : ''} selected
         </div>
       </div>
     </nav>

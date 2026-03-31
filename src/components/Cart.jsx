@@ -1,4 +1,4 @@
-function Cart({ cartItems, increaseQty, decreaseQty, sendToKitchen }) {
+function Cart({ cartItems, increaseQty, decreaseQty, openCheckout }) {
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
@@ -8,13 +8,16 @@ function Cart({ cartItems, increaseQty, decreaseQty, sendToKitchen }) {
       </h4>
 
       <p className="kitchen-note mb-4">
-        Orders are sent directly to the kitchen display system.
+        Orders are prepared through our digital kitchen display system.
       </p>
 
       {cartItems.length === 0 ? (
         <div className="text-center py-4">
           <i className="bi bi-bag-x fs-1 mb-3 d-block text-muted"></i>
-          <p className="text-muted">Your cart is still empty.</p>
+          <h6 className="fw-bold">Your table is waiting 🍽️</h6>
+          <p className="text-muted mb-0">
+            Add a few dishes to begin your Bloom & Bite experience.
+          </p>
         </div>
       ) : (
         <>
@@ -32,9 +35,13 @@ function Cart({ cartItems, increaseQty, decreaseQty, sendToKitchen }) {
                 </div>
 
                 <div className="qty-controls">
-                  <button className="qty-btn" onClick={() => decreaseQty(item.id)}>-</button>
+                  <button className="qty-btn" onClick={() => decreaseQty(item.id)}>
+                    -
+                  </button>
                   <span>{item.quantity}</span>
-                  <button className="qty-btn" onClick={() => increaseQty(item.id)}>+</button>
+                  <button className="qty-btn" onClick={() => increaseQty(item.id)}>
+                    +
+                  </button>
                 </div>
               </li>
             ))}
@@ -45,8 +52,8 @@ function Cart({ cartItems, increaseQty, decreaseQty, sendToKitchen }) {
             <h5 className="mb-0 fw-bold">${total.toFixed(2)}</h5>
           </div>
 
-          <button className="btn kitchen-btn w-100" onClick={sendToKitchen}>
-            <i className="bi bi-send-check me-2"></i>Send Order to Kitchen
+          <button className="btn kitchen-btn w-100" onClick={openCheckout}>
+            <i className="bi bi-credit-card-2-front me-2"></i>Proceed to Checkout
           </button>
         </>
       )}

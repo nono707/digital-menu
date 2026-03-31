@@ -7,7 +7,7 @@ function SearchBar({ searchTerm, setSearchTerm }) {
           <input
             type="text"
             className="form-control form-control-lg bloom-search"
-            placeholder="Search for a drink, dish, or dessert..."
+            placeholder="Search dishes, drinks, salads, or desserts..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
