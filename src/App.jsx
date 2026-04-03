@@ -15,9 +15,8 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // START CART EMPTY EVERY REFRESH
   const [cartItems, setCartItems] = useState([]);
-  // END CART EMPTY EVERY REFRESH
+  
 
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('bloomTheme');
@@ -36,12 +35,6 @@ function App() {
     paymentMethod: 'Cash',
     notes: '',
   });
-
-  // Remove cart localStorage
-  // useEffect(() => {
-  //   localStorage.setItem('bloomCart', JSON.stringify(cartItems));
-  // }, [cartItems]);
-
   useEffect(() => {
     localStorage.setItem('bloomTheme', JSON.stringify(darkMode));
   }, [darkMode]);
