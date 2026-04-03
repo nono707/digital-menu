@@ -46,6 +46,17 @@ function App() {
       document.body.classList.remove('dark-mode-body');
     }
   }, [darkMode]);
+  useEffect(() => {
+  if (selectedItem || showCheckout) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'auto';
+  }
+
+  return () => {
+    document.body.style.overflow = 'auto';
+  };
+}, [selectedItem, showCheckout]);
 
   const categories = ['All', ...new Set(menuData.map(item => item.category))];
 
