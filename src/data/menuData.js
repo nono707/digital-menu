@@ -1,7 +1,7 @@
 const BASE = import.meta.env.BASE_URL;
 
 const menuData = [
-  // ===== MAIN COURSE =====
+  
   {
     id: 1,
     name: "Bloom Burger",
@@ -68,8 +68,6 @@ const menuData = [
     badge: "Popular",
     tag: "Comfort"
   },
-
-  // ===== SALADS =====
   {
     id: 7,
     name: "Crab Salad",
@@ -115,7 +113,6 @@ const menuData = [
     tag: "Protein"
   },
 
-  // ===== DRINKS =====
   {
     id: 11,
     name: "Iced Latte Bloom",
@@ -161,7 +158,6 @@ const menuData = [
     tag: "Refreshing"
   },
 
-  // ===== DESSERTS =====
   {
     id: 15,
     name: "Berry Cheesecake",

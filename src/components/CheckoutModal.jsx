@@ -38,7 +38,7 @@ function CheckoutModal({
               />
             </div>
 
-            {/* Dining Type */}
+            {}
             <div className="col-md-6">
               <label className="form-label fw-semibold">Dining Type</label>
               <select
@@ -56,7 +56,7 @@ function CheckoutModal({
               </select>
             </div>
 
-            {/* Table Number */}
+            {}
             {checkoutData.diningType === "Dine In" && (
               <div className="col-md-6">
                 <label className="form-label fw-semibold">Table Number</label>
@@ -75,7 +75,7 @@ function CheckoutModal({
               </div>
             )}
 
-            {/* Payment Method */}
+            {}
             <div className="col-12">
               <label className="form-label fw-semibold">Payment Method</label>
               <div className="d-flex flex-wrap gap-2">
@@ -99,7 +99,7 @@ function CheckoutModal({
               </div>
             </div>
 
-            {/* Notes */}
+            {}
             <div className="col-12">
               <label className="form-label fw-semibold">Special Notes</label>
               <textarea
@@ -114,7 +114,7 @@ function CheckoutModal({
             </div>
           </div>
 
-          {/* Order Summary */}
+          {}
           <div className="checkout-summary mt-4">
             <h5 className="fw-bold mb-3">Order Summary</h5>
             {cartItems.map((item) => (
