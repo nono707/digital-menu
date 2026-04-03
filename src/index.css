@@ -1,4 +1,4 @@
-body {
+ body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(180deg, #fff9fc, #fdf4f9);
@@ -625,5 +625,85 @@ body.dark-mode-body {
     bottom: 16px;
     text-align: center;
     border-radius: 20px;
+  }
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  overflow-x: hidden;
+  min-height: 100%;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.row,
+.container,
+.container-fluid {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.category-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.category-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.checkout-overlay {
+  overflow-y: auto;
+  align-items: flex-start;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.checkout-modal {
+  max-width: 760px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.checkout-scroll-content {
+  max-height: 85vh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+textarea.bloom-search {
+  border-radius: 24px;
+  padding-top: 14px;
+  padding-left: 18px;
+  resize: none;
+}
+
+select.bloom-search {
+  padding-left: 18px !important;
+}
+
+/* On mobile, cart should not be sticky */
+@media (max-width: 991px) {
+  .cart-card {
+    position: static !important;
+    top: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout-modal {
+    max-height: 92vh;
+    border-radius: 24px;
+  }
+
+  .checkout-scroll-content {
+    max-height: 88vh;
   }
 }

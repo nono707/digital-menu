@@ -14,11 +14,11 @@ import CheckoutModal from './components/CheckoutModal';
 function App() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
-  const [cartItems, setCartItems] = useState(() => {
-    const savedCart = localStorage.getItem('bloomCart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
 
+  // ❌ NO localStorage for cart anymore
+  const [cartItems, setCartItems] = useState([]);
+
+  // ✅ Keep dark mode saved if you want
   const [darkMode, setDarkMode] = useState(() => {
     const savedTheme = localStorage.getItem('bloomTheme');
     return savedTheme ? JSON.parse(savedTheme) : false;
@@ -37,10 +37,7 @@ function App() {
     notes: '',
   });
 
-  useEffect(() => {
-    localStorage.setItem('bloomCart', JSON.stringify(cartItems));
-  }, [cartItems]);
-
+  // ✅ Save only dark mode
   useEffect(() => {
     localStorage.setItem('bloomTheme', JSON.stringify(darkMode));
   }, [darkMode]);
@@ -53,9 +50,9 @@ function App() {
     }
   }, [darkMode]);
 
-  const categories = ['All', ...new Set(menuData.map(item => item.category))];
+  const categories = ['All', ...new Set(menuData.map((item) => item.category))];
 
-  const filteredItems = menuData.filter(item => {
+  const filteredItems = menuData.filter((item) => {
     const matchesCategory =
       selectedCategory === 'All' || item.category === selectedCategory;
 
@@ -68,10 +65,10 @@ function App() {
   });
 
   const addToCart = (item) => {
-    const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
+    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
 
     if (existingItem) {
-      const updatedCart = cartItems.map(cartItem =>
+      const updatedCart = cartItems.map((cartItem) =>
         cartItem.id === item.id
           ? { ...cartItem, quantity: cartItem.quantity + 1 }
           : cartItem
@@ -86,7 +83,7 @@ function App() {
   };
 
   const increaseQty = (id) => {
-    const updatedCart = cartItems.map(item =>
+    const updatedCart = cartItems.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
     setCartItems(updatedCart);
@@ -94,10 +91,10 @@ function App() {
 
   const decreaseQty = (id) => {
     const updatedCart = cartItems
-      .map(item =>
+      .map((item) =>
         item.id === id ? { ...item, quantity: item.quantity - 1 } : item
       )
-      .filter(item => item.quantity > 0);
+      .filter((item) => item.quantity > 0);
 
     setCartItems(updatedCart);
   };
@@ -134,24 +131,31 @@ function App() {
       paymentMethod: checkoutData.paymentMethod,
       notes: checkoutData.notes,
       items: cartItems,
-      total: cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
+      total: cartItems.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+      ),
       time: new Date().toLocaleString(),
       status: 'Sent to Kitchen',
     };
 
+    // ✅ Save order history only
     localStorage.setItem('lastKitchenOrder', JSON.stringify(kitchenOrder));
 
     const previousOrders =
       JSON.parse(localStorage.getItem('bloomOrderHistory')) || [];
+
     localStorage.setItem(
       'bloomOrderHistory',
       JSON.stringify([kitchenOrder, ...previousOrders])
     );
 
+    // ✅ CLEAR cart after checkout
     setCartItems([]);
     setShowCheckout(false);
     setOrderSuccess(true);
 
+    // ✅ Reset checkout form
     setCheckoutData({
       name: '',
       diningType: 'Dine In',
@@ -163,10 +167,13 @@ function App() {
     setTimeout(() => setOrderSuccess(false), 4000);
   };
 
-  const totalCartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const totalCartCount = cartItems.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
 
   return (
-    <div className={darkMode ? 'dark-mode' : ''}>
+    <div className={`app-wrapper ${darkMode ? 'dark-mode' : ''}`}>
       <NavbarMenu cartCount={totalCartCount} />
 
       <div className="container py-4">

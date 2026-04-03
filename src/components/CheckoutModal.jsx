@@ -11,20 +11,22 @@ function CheckoutModal({
   );
 
   return (
-    <div className="custom-modal-overlay" onClick={closeModal}>
-      <div className="custom-modal-card checkout-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="custom-modal-overlay checkout-overlay" onClick={closeModal}>
+      <div
+        className="custom-modal-card checkout-modal"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className="modal-close-btn" onClick={closeModal}>
           <i className="bi bi-x-lg"></i>
         </button>
 
-        <div className="p-4">
+        <div className="p-4 checkout-scroll-content">
           <h2 className="fw-bold mb-2">Checkout Experience</h2>
           <p className="text-muted mb-4">
             Complete your order details before sending it to the kitchen.
           </p>
 
           <div className="row g-3">
-            {/* Customer Name */}
             <div className="col-12">
               <label className="form-label fw-semibold">Customer Name</label>
               <input
@@ -38,7 +40,6 @@ function CheckoutModal({
               />
             </div>
 
-            {}
             <div className="col-md-6">
               <label className="form-label fw-semibold">Dining Type</label>
               <select
@@ -56,8 +57,7 @@ function CheckoutModal({
               </select>
             </div>
 
-            {}
-            {checkoutData.diningType === "Dine In" && (
+            {checkoutData.diningType === 'Dine In' && (
               <div className="col-md-6">
                 <label className="form-label fw-semibold">Table Number</label>
                 <input
@@ -75,16 +75,17 @@ function CheckoutModal({
               </div>
             )}
 
-            {}
             <div className="col-12">
               <label className="form-label fw-semibold">Payment Method</label>
               <div className="d-flex flex-wrap gap-2">
-                {["Cash", "Card on Arrival", "Online Demo"].map((method) => (
+                {['Cash', 'Card on Arrival', 'Online Demo'].map((method) => (
                   <button
                     key={method}
                     type="button"
                     className={`btn payment-btn ${
-                      checkoutData.paymentMethod === method ? "active-payment" : ""
+                      checkoutData.paymentMethod === method
+                        ? 'active-payment'
+                        : ''
                     }`}
                     onClick={() =>
                       setCheckoutData({
@@ -99,7 +100,6 @@ function CheckoutModal({
               </div>
             </div>
 
-            {}
             <div className="col-12">
               <label className="form-label fw-semibold">Special Notes</label>
               <textarea
@@ -114,7 +114,6 @@ function CheckoutModal({
             </div>
           </div>
 
-          {}
           <div className="checkout-summary mt-4">
             <h5 className="fw-bold mb-3">Order Summary</h5>
             {cartItems.map((item) => (
@@ -137,7 +136,8 @@ function CheckoutModal({
           </div>
 
           <button className="btn kitchen-btn w-100 mt-4" onClick={confirmOrder}>
-            <i className="bi bi-send-check me-2"></i>Confirm & Send to Kitchen
+            <i className="bi bi-send-check me-2"></i>
+            Confirm & Send to Kitchen
           </button>
         </div>
       </div>
